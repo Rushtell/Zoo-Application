@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Zoo_Application
 {
-    class Turtle : Reptile
+    public class Turtle : Reptile
     {
         public Turtle()
         {
             requiredSpaceSqFt = 5;
-            friendlyAnimals.Add("Turtle");
-            friendlyAnimals.Add("Parrots");
-            friendlyAnimals.Add("Bison");
-            friendlyAnimals.Add("Elephant");
+            friendlyAnimals.Add(typeof(Turtle).ToString());
+            friendlyAnimals.Add(typeof(Parrot).ToString());
+            friendlyAnimals.Add(typeof(Bison).ToString());
+            friendlyAnimals.Add(typeof(Elephant).ToString());
         }
 
         public override string FavoriteFood()

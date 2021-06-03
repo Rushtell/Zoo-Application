@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Zoo_Application
 {
-    interface IHireValidator
+    public interface IHireValidator
     {
+        public List<string> ValidateEmployee(IEmployee employee);
     }
 }

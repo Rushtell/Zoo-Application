@@ -8,5 +8,8 @@ namespace Zoo_Application
 {
     public class FeedTime
     {
+        public DateTime _FeedTime { get; set; }
+
+        public ZooKeeper FeedByZooKeeper { get; set; }
     }
 }

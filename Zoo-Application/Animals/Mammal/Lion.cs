@@ -11,7 +11,7 @@ namespace Zoo_Application
         public Lion()
         {
             requiredSpaceSqFt = 1000;
-            friendlyAnimals.Add("Lion");
+            friendlyAnimals.Add(typeof(Lion).ToString());
         }
 
         public override string FavoriteFood()

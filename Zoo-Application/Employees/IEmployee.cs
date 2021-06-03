@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Zoo_Application
 {
-    interface IEmployee
+    public interface IEmployee
     {
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
     }
 }

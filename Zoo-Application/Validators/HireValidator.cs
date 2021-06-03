@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Zoo_Application
 {
-    class HireValidator
+    public abstract class HireValidator
     {
+        public List<string> ValidationErrors = new List<string>();
+
+        public abstract List<string> ValidateEmployee(IEmployee employee);
     }
 }

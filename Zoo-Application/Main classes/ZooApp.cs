@@ -1,8 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Zoo_Application
 {
-    public class Class1
+    public class ZooApp
     {
+        private List<Zoo> _zoos = new List<Zoo>();
+
+        public void AddZoo(Zoo zoo)
+        {
+            _zoos.Add(zoo);
+        }
     }
 }

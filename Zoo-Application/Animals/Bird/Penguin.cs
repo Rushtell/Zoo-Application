@@ -11,7 +11,7 @@ namespace Zoo_Application
         public Penguin()
         {
             requiredSpaceSqFt = 10;
-            friendlyAnimals.Add("Penguin");
+            friendlyAnimals.Add(typeof(Penguin).ToString());
         }
 
         public override string FavoriteFood()

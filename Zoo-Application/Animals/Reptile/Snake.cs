@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Zoo_Application
 {
-    class Snake : Reptile
+    public class Snake : Reptile
     {
         public Snake()
         {
             requiredSpaceSqFt = 2;
-            friendlyAnimals.Add("Snake");
+            friendlyAnimals.Add(typeof(Snake).ToString());
         }
 
         public override string FavoriteFood()

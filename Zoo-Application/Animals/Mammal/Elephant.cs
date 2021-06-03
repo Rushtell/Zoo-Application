@@ -11,10 +11,10 @@ namespace Zoo_Application
         public Elephant()
         {
             requiredSpaceSqFt = 1000;
-            friendlyAnimals.Add("Bison");
-            friendlyAnimals.Add("Parrots");
-            friendlyAnimals.Add("Turtle");
-            friendlyAnimals.Add("Elephant");
+            friendlyAnimals.Add(typeof(Bison).ToString());
+            friendlyAnimals.Add(typeof(Parrot).ToString());
+            friendlyAnimals.Add(typeof(Turtle).ToString());
+            friendlyAnimals.Add(typeof(Elephant).ToString());
         }
 
         public override string FavoriteFood()

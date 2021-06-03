@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zoo_Application
 {
-    public class Food
+    public abstract class Food
     {
     }
 }

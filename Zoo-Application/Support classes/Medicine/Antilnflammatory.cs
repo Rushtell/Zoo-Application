@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zoo_Application
 {
-    class Antilnflammatory
+    public class Antilnflammatory : Medicine
     {
     }
 }
