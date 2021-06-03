@@ -50,6 +50,14 @@ namespace Zoo_Application.Test
             zoo.HealAnimals();
 
             Assert.Equal(false, turtle.IsSick());
+
+            Parrot parrot = new Parrot() { ID = 3, favoriteFood = typeof(Vegetable).ToString(), sick = true };
+            Lion lion = new Lion() { ID = 4, favoriteFood = typeof(Meet).ToString(), sick = true };
+
+            var test3 = zoo.FindAvailableEnclosure(parrot);
+            zoo.FindAvailableEnclosure(elephant).AddAnimals(elephant);
+            var test4 = zoo.FindAvailableEnclosure(lion);
+            zoo.FindAvailableEnclosure(turtle).AddAnimals(turtle);
         }
     }
 }

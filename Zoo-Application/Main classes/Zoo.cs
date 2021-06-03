@@ -35,9 +35,9 @@ namespace Zoo_Application
                 int tempSq = enclosur.SqureFeet;
                 foreach (var item in enclosur.Animals)
                 {
-                    tempSq -= item.requiredSpaceSqFt;
+                    tempSq -= item.RequiredSpaceSqFt();
                 }
-                if ((tempSq - animal.requiredSpaceSqFt) > 0)
+                if ((tempSq - animal.RequiredSpaceSqFt()) >= 0)
                 {
                     foreach (var item in enclosur.Animals)
                     {

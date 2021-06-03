@@ -30,6 +30,7 @@ namespace Zoo_Application
         {
             if (!HasAnimalExperience(animal.GetType().ToString())) throw new NoNeededExperienceException("No Needed Experience Exception");
             animal.feedTimes.Add(new FeedTime() { FeedByZooKeeper = this, _FeedTime = time });
+            animal.FavoriteFood();
             return true;
         }
     }
