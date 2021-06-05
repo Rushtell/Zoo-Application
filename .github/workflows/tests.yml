@@ -23,7 +23,7 @@ jobs:
     - uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.COVER_TOKEN }} # not required for public repos
-        files: ./Zoo-Application.Test/TestResults/coverage.opencover.xml
+        files: ./tests/Zoo-Application.Test/TestResults/coverage.opencover.xml
         flags: unittests 
         name: codecov-umbrella
         fail_ci_if_error: true 
