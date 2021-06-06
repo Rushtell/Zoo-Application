@@ -232,6 +232,19 @@ namespace Zoo_Application.Test
                 var test1 = zoo.FindAvailableEnclosure(elephant);
             });
 
+            Assert.Throws<NotFriendlyAnimalException>(() =>
+            {
+                ZooApp zooApp = new ZooApp();
+                IConsole console = new TestConsole();
+                Zoo zoo = new Zoo("Forest", console);
+                zooApp.AddZoo(zoo);
+                zoo.AddEnclosure("Enclosure1", 10000);
+                Elephant elephant = new Elephant() { ID = 1, sick = true };
+                Lion lion = new Lion() { ID = 2, sick = true };
+                zoo.FindAvailableEnclosure(elephant).AddAnimals(elephant);
+                zoo.Enclosures[0].AddAnimals(lion);
+            });
+
             Assert.Throws<NoNeededExperienceException>(() =>
             {
                 ZooApp zooApp = new ZooApp();
@@ -269,6 +282,78 @@ namespace Zoo_Application.Test
 
                 zoo.Enclosures[0].AddAnimals(elephant);
             });
+
+            Assert.Throws<NoNeededExperienceException>(() =>
+            {
+                ZooApp zooApp = new ZooApp();
+
+                IConsole console = new TestConsole();
+
+                Zoo zoo = new Zoo("Forest", console);
+
+                zooApp.AddZoo(zoo);
+
+                zoo.AddEnclosure("Enclosure1", 10000);
+
+                Veterinarian veterinarian1 = new Veterinarian() { LastName = "Krishin" };
+                veterinarian1.AddAnimalExperience(typeof(Lion).ToString());
+
+                zoo.HireEmployee(veterinarian1);
+            });
+
+            Assert.Throws<NoNeededExperienceException>(() =>
+            {
+                ZooApp zooApp = new ZooApp();
+
+                IConsole console = new TestConsole();
+
+                Zoo zoo = new Zoo("Forest", console);
+
+                zooApp.AddZoo(zoo);
+
+                zoo.AddEnclosure("Enclosure1", 10000);
+
+                Veterinarian veterinarian1 = new Veterinarian() { FirstName = "Krishin" };
+                veterinarian1.AddAnimalExperience(typeof(Lion).ToString());
+
+                zoo.HireEmployee(veterinarian1);
+            });
+
+            Assert.Throws<NoNeededExperienceException>(() =>
+            {
+                ZooApp zooApp = new ZooApp();
+
+                IConsole console = new TestConsole();
+
+                Zoo zoo = new Zoo("Forest", console);
+
+                zooApp.AddZoo(zoo);
+
+                zoo.AddEnclosure("Enclosure1", 10000);
+
+                ZooKeeper zooKeeper = new ZooKeeper() { LastName = "Krishin" };
+                zooKeeper.AddAnimalExperience(typeof(Lion).ToString());
+
+                zoo.HireEmployee(zooKeeper);
+            });
+
+            Assert.Throws<NoNeededExperienceException>(() =>
+            {
+                ZooApp zooApp = new ZooApp();
+
+                IConsole console = new TestConsole();
+
+                Zoo zoo = new Zoo("Forest", console);
+
+                zooApp.AddZoo(zoo);
+
+                zoo.AddEnclosure("Enclosure1", 10000);
+
+                ZooKeeper zooKeeper = new ZooKeeper() { FirstName = "Krishin" };
+                zooKeeper.AddAnimalExperience(typeof(Lion).ToString());
+
+                zoo.HireEmployee(zooKeeper);
+            });
         }
 
         [Fact]
@@ -281,6 +366,25 @@ namespace Zoo_Application.Test
             var test2 = test.FeedSchedule();
 
             Assert.Equal(feedScheduleTest, test2);
+        }
+
+        [Fact]
+        public void ShouldNotFriendlyPenguinsAndLions()
+        {
+            ZooApp zooApp = new ZooApp();
+            IConsole console = new TestConsole();
+            Zoo zoo = new Zoo("Forest", console);
+            zooApp.AddZoo(zoo);
+            zoo.AddEnclosure("Enclosure1", 10000);
+            zoo.AddEnclosure("Enclosure2", 10000);
+            zoo.AddEnclosure("Enclosure3", 10000);
+            Lion lion = new Lion() { ID = 1, sick = true };
+            Penguin penguin = new Penguin() { ID = 2, sick = true };
+            Bison bison = new Bison() { ID = 3, sick = true };
+
+            zoo.FindAvailableEnclosure(lion).AddAnimals(lion);
+            zoo.FindAvailableEnclosure(penguin).AddAnimals(penguin);
+            zoo.FindAvailableEnclosure(bison).AddAnimals(bison);
         }
     }
 

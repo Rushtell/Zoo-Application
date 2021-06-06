@@ -24,6 +24,10 @@ namespace Zoo_Application
                 tempSq -= animalItem.RequiredSpaceSqFt();
             }
             if (tempSq < animal.RequiredSpaceSqFt()) throw new NoAvailableSpaceException("NoAvailableSpaceException");
+            foreach (var animalItem in Animals)
+            {
+                if (!animalItem.IsFriendlyWith(animal.GetType().ToString())) throw new NotFriendlyAnimalException("NotFriendlyAnimalException");
+            }
             Animals.Add(animal);
         }
     }
