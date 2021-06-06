@@ -8,6 +8,6 @@ namespace Zoo_Application
 {
     public interface IHireValidator
     {
-        public List<string> ValidateEmployee(IEmployee employee);
+        public List<string> ValidateEmployee(IEmployee employee, Zoo zoo);
     }
 }

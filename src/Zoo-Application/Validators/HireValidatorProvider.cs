@@ -8,18 +8,18 @@ namespace Zoo_Application
 {
     public class HireValidatorProvider : IHireValidator
     {
-        public List<string> ValidateEmployee(IEmployee employee)
+        public List<string> ValidateEmployee(IEmployee employee, Zoo zoo)
         {
             Type type = employee.GetType();
             if (type == typeof(Veterinarian))
             {
                 VeterinarianHireValidator veterinarianHireValidator = new VeterinarianHireValidator();
-                return veterinarianHireValidator.ValidateEmployee(employee);
+                return veterinarianHireValidator.ValidateEmployee(employee, zoo);
             }
             else if (type == typeof(ZooKeeper))
             {
                 ZooKeeperHireValidator zooKeeperHireValidator = new ZooKeeperHireValidator();
-                return zooKeeperHireValidator.ValidateEmployee(employee);
+                return zooKeeperHireValidator.ValidateEmployee(employee, zoo);
             }
             else throw new Exception();
         }

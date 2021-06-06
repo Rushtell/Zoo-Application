@@ -13,9 +13,11 @@ namespace Zoo_Application
             requiredSpaceSqFt = 1000;
             friendlyAnimals.Add(typeof(Elephant).ToString());
             friendlyAnimals.Add(typeof(Bison).ToString());
+            favoriteFood[0] = typeof(Grass).ToString();
+
         }
 
-        public override string FavoriteFood()
+        public override string[] FavoriteFood()
         {
             return favoriteFood;
         }

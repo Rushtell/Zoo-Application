@@ -32,7 +32,9 @@ namespace Zoo_Application
         {
             if (!HasAnimalExperience(animal.GetType().ToString())) throw new NoNeededExperienceException("No Needed Experience Exception");
             animal.feedTimes.Add(new FeedTime() { FeedByZooKeeper = this, _FeedTime = time });
-            animal.FavoriteFood();
+            Type type = Type.GetType(animal.FavoriteFood()[0]);
+            object o = Activator.CreateInstance(type);
+            animal.Feed((Food)o);
             CountAction--;
             return true;
         }

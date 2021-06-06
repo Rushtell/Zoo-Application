@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Zoo_Application
 {
@@ -12,7 +13,7 @@ namespace Zoo_Application
 
         public int requiredSpaceSqFt { get; set; }
 
-        public string favoriteFood { get; set; }
+        public string[] favoriteFood { get; set; } = new string[1];
 
         public List<FeedTime> feedTimes = new List<FeedTime>();
 
@@ -25,7 +26,7 @@ namespace Zoo_Application
 
         public abstract int RequiredSpaceSqFt();
 
-        public abstract string FavoriteFood();
+        public abstract string [] FavoriteFood();
 
         public List<FeedTime> FeedTimes()
         {
@@ -46,7 +47,8 @@ namespace Zoo_Application
 
         public void Feed(Food food)
         {
-
+            if (Type.GetType(favoriteFood[0]) == food.GetType()) Console.WriteLine("Mmmm, hrum-hrum-hrum");
+            else Console.WriteLine("Hrum-hrum");
         }
 
         public void AddFeedSchedule(List<int> hours)

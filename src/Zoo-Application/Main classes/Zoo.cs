@@ -54,7 +54,7 @@ namespace Zoo_Application
         {
             HireValidatorProvider hireValidatorProvider = new HireValidatorProvider();
 
-            List<string> ErrorsValidate = hireValidatorProvider.ValidateEmployee(employee);
+            List<string> ErrorsValidate = hireValidatorProvider.ValidateEmployee(employee, this);
 
             if (ErrorsValidate.Count > 0)
             {

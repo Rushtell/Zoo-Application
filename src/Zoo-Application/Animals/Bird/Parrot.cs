@@ -15,9 +15,11 @@ namespace Zoo_Application
             friendlyAnimals.Add(typeof(Parrot).ToString());
             friendlyAnimals.Add(typeof(Bison).ToString());
             friendlyAnimals.Add(typeof(Turtle).ToString());
+            favoriteFood[0] = typeof(Vegetable).ToString();
+
         }
 
-        public override string FavoriteFood()
+        public override string[] FavoriteFood()
         {
             return favoriteFood;
         }
