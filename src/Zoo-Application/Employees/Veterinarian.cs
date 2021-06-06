@@ -28,10 +28,10 @@ namespace Zoo_Application
             else return false;
         }
 
-        public bool HealAnimal(Animal animal)
+        public bool HealAnimal(Animal animal, IConsole console)
         {
             if (!HasAnimalExperience(animal.GetType().ToString())) throw new NoNeededExperienceException("No Needed Experience Exception");
-            // Процесс лечения
+            console.WriteLine($"{FirstName} {LastName} heal {animal}...");
             animal.sick = false;
             CountAction--;
             return true;

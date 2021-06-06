@@ -45,10 +45,10 @@ namespace Zoo_Application
 
         public abstract bool IsFriendlyWith(string animal);
 
-        public void Feed(Food food)
+        public void Feed(Food food, IConsole console)
         {
-            if (Type.GetType(favoriteFood[0]) == food.GetType()) Console.WriteLine("Mmmm, hrum-hrum-hrum");
-            else Console.WriteLine("Hrum-hrum");
+            if (Type.GetType(favoriteFood[0]) == food.GetType()) console.WriteLine("Mmmm, hrum-hrum-hrum");
+            else console.WriteLine("Hrum-hrum");
         }
 
         public void AddFeedSchedule(List<int> hours)

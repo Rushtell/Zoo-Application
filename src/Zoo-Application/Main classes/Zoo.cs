@@ -8,6 +8,8 @@ namespace Zoo_Application
 {
     public class Zoo
     {
+        public IConsole ConsoleZoo { get; set; }
+
         public List<Enclosure> Enclosures { get; set; } = new List<Enclosure>();
 
         public List<IEmployee> Employees { get; set; } = new List<IEmployee>();
@@ -21,6 +23,7 @@ namespace Zoo_Application
 
         public Enclosure AddEnclosure(string name, int squreFeet)
         {
+            ConsoleZoo.WriteLine($"Add Enclosure name: {name} squre feet: {squreFeet}...");
             Enclosure enclosure = new Enclosure() { Name = name, ParentZoo = this, SqureFeet = squreFeet };
             Enclosures.Add(enclosure);
             return enclosure;
@@ -28,6 +31,7 @@ namespace Zoo_Application
 
         public Enclosure FindAvailableEnclosure(Animal animal)
         {
+            ConsoleZoo.WriteLine($"Find Available Enclosure for animal...");
             if (Enclosures.Count == 0) throw new NoAvailableEclosureException("NoAvailableEclosureException");
             foreach (var enclosur in Enclosures)
             {
@@ -52,12 +56,18 @@ namespace Zoo_Application
 
         public void HireEmployee(IEmployee employee)
         {
+            ConsoleZoo.WriteLine($"Try Hire Employee...");
             HireValidatorProvider hireValidatorProvider = new HireValidatorProvider();
 
             List<string> ErrorsValidate = hireValidatorProvider.ValidateEmployee(employee, this);
 
             if (ErrorsValidate.Count > 0)
             {
+                ConsoleZoo.WriteLine($"Ooops, hire is fall:");
+                foreach (var item in ErrorsValidate)
+                {
+                    ConsoleZoo.WriteLine($"{item}");
+                }
                 throw new NoNeededExperienceException(ErrorsValidate[0]);
             }
 
@@ -66,6 +76,7 @@ namespace Zoo_Application
 
         public void FeedAnimals(DateTime time)
         {
+            ConsoleZoo.WriteLine($"Start feed animals...");
             FillCount();
             foreach (var enclosure in Enclosures)
             {
@@ -79,7 +90,7 @@ namespace Zoo_Application
                             {
                                 if (employee.CountAction != 0)
                                 {
-                                    ((ZooKeeper)employee).FeedAnimal(animal, time);
+                                    ((ZooKeeper)employee).FeedAnimal(animal, time, ConsoleZoo);
                                     break;
                                 }
                             }
@@ -106,7 +117,7 @@ namespace Zoo_Application
                                 {
                                     if (employee.CountAction != 0)
                                     {
-                                        ((Veterinarian)employee).HealAnimal(animal);
+                                        ((Veterinarian)employee).HealAnimal(animal, ConsoleZoo);
                                         break;
                                     }
                                 }

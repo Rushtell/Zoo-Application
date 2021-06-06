@@ -28,13 +28,14 @@ namespace Zoo_Application
             else return false;
         }
 
-        public bool FeedAnimal (Animal animal, DateTime time)
+        public bool FeedAnimal (Animal animal, DateTime time, IConsole console)
         {
             if (!HasAnimalExperience(animal.GetType().ToString())) throw new NoNeededExperienceException("No Needed Experience Exception");
+            console.WriteLine($"{FirstName} {LastName} feed {animal}...");
             animal.feedTimes.Add(new FeedTime() { FeedByZooKeeper = this, _FeedTime = time });
             Type type = Type.GetType(animal.FavoriteFood()[0]);
             object o = Activator.CreateInstance(type);
-            animal.Feed((Food)o);
+            animal.Feed((Food)o, console);
             CountAction--;
             return true;
         }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Zoo_Application.Test
@@ -11,6 +12,10 @@ namespace Zoo_Application.Test
             ZooApp zooApp = new ZooApp();
 
             Zoo zoo = new Zoo("Forest");
+
+            IConsole console = new TestConsole();
+
+            zoo.ConsoleZoo = console;
 
             zooApp.AddZoo(zoo);
 
@@ -67,6 +72,10 @@ namespace Zoo_Application.Test
             ZooApp zooApp = new ZooApp();
 
             Zoo zoo = new Zoo("Forest");
+
+            IConsole console = new TestConsole();
+
+            zoo.ConsoleZoo = console;
 
             zooApp.AddZoo(zoo);
 
@@ -151,5 +160,20 @@ namespace Zoo_Application.Test
         }
     }
 
-    
+    public class TestConsole : IConsole
+    {
+        List<string> ConsoleLog = new List<string>();
+
+        public void Write(string msg)
+        {
+            ConsoleLog.Add($"{msg}");
+        }
+
+        public void WriteLine(string msg)
+        {
+            ConsoleLog.Add($"\n{msg}");
+        }
+    }
+
+
 }
