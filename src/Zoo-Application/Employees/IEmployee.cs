@@ -11,5 +11,9 @@ namespace Zoo_Application
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public string AnimalExperience { get; set; }
+
+        public int CountAction { get; set; }
     }
 }

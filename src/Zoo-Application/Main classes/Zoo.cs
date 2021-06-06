@@ -66,6 +66,7 @@ namespace Zoo_Application
 
         public void FeedAnimals(DateTime time)
         {
+            FillCount();
             foreach (var enclosure in Enclosures)
             {
                 foreach (var animal in enclosure.Animals)
@@ -76,7 +77,11 @@ namespace Zoo_Application
                         {
                             if (((ZooKeeper)employee).HasAnimalExperience(animal.GetType().ToString()))
                             {
-                                ((ZooKeeper)employee).FeedAnimal(animal, time);
+                                if (employee.CountAction != 0)
+                                {
+                                    ((ZooKeeper)employee).FeedAnimal(animal, time);
+                                    break;
+                                }
                             }
                         }
                     }
@@ -86,6 +91,7 @@ namespace Zoo_Application
 
         public void HealAnimals()
         {
+            FillCount();
             foreach (var enclosure in Enclosures)
             {
                 foreach (var animal in enclosure.Animals)
@@ -98,12 +104,40 @@ namespace Zoo_Application
                             {
                                 if (((Veterinarian)employee).HasAnimalExperience(animal.GetType().ToString()))
                                 {
-                                    ((Veterinarian)employee).HealAnimal(animal);
+                                    if (employee.CountAction != 0)
+                                    {
+                                        ((Veterinarian)employee).HealAnimal(animal);
+                                        break;
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            }
+        }
+
+        public void FillCount()
+        {
+            foreach (var employee in Employees)
+            {
+                int tempCountAction = -1;
+                double tempCountAnimal = 0;
+                double tempCountEmployee = 0;
+                foreach (var enclosure in Enclosures)
+                {
+                    foreach (var animal in enclosure.Animals)
+                    {
+                        if (animal.GetType().ToString() == employee.AnimalExperience) tempCountAnimal++;
+                    }
+                }
+                foreach (var employee2 in Employees)
+                {
+                    if (employee2.AnimalExperience == employee.AnimalExperience) tempCountEmployee++;
+                }
+                if (tempCountEmployee > 1) tempCountAction = Convert.ToInt32(Math.Ceiling(tempCountAnimal / tempCountEmployee));
+
+                employee.CountAction = tempCountAction;
             }
         }
     }

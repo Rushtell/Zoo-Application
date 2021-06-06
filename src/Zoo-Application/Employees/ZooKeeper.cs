@@ -8,6 +8,8 @@ namespace Zoo_Application
 {
     public class ZooKeeper : IEmployee
     {
+        public int CountAction { get; set; }
+
         public string AnimalExperience { get; set; }
 
         public string FirstName { get; set; }
@@ -31,6 +33,7 @@ namespace Zoo_Application
             if (!HasAnimalExperience(animal.GetType().ToString())) throw new NoNeededExperienceException("No Needed Experience Exception");
             animal.feedTimes.Add(new FeedTime() { FeedByZooKeeper = this, _FeedTime = time });
             animal.FavoriteFood();
+            CountAction--;
             return true;
         }
     }
