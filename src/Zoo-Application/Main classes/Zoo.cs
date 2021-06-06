@@ -16,9 +16,11 @@ namespace Zoo_Application
 
         public string Location { get; set; }
 
-        public Zoo(string location)
+        public Zoo(string location, IConsole console)
         {
             Location = location;
+            ConsoleZoo = console;
+            ConsoleZoo.Write($"Added new zoo in {location}");
         }
 
         public Enclosure AddEnclosure(string name, int squreFeet)

@@ -18,7 +18,12 @@ namespace Zoo_Application
 
         public void AddAnimals(Animal animal)
         {
-            // Проверка на добавление животного
+            int tempSq = SqureFeet;
+            foreach (var animalItem in Animals)
+            {
+                tempSq -= animalItem.RequiredSpaceSqFt();
+            }
+            if (tempSq < animal.RequiredSpaceSqFt()) throw new NoAvailableSpaceException("NoAvailableSpaceException");
             Animals.Add(animal);
         }
     }

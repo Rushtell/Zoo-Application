@@ -32,7 +32,7 @@ namespace Zoo_Application
         {
             if (!HasAnimalExperience(animal.GetType().ToString())) throw new NoNeededExperienceException("No Needed Experience Exception");
             console.WriteLine($"{FirstName} {LastName} heal {animal}...");
-            animal.sick = false;
+            animal.Heal(new Antibiotics());
             CountAction--;
             return true;
         }
