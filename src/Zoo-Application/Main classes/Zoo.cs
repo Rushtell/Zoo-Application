@@ -61,7 +61,7 @@ namespace Zoo_Application
             ConsoleZoo.WriteLine($"Try Hire Employee...");
             HireValidatorProvider hireValidatorProvider = new HireValidatorProvider();
 
-            List<string> ErrorsValidate = hireValidatorProvider.ValidateEmployee(employee, this);
+            List<string> ErrorsValidate = hireValidatorProvider.ValidateEmployee(employee, this, ConsoleZoo);
 
             if (ErrorsValidate.Count > 0)
             {

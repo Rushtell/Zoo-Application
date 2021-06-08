@@ -11,6 +11,6 @@ namespace Zoo_Application
     {
         public List<string> ValidationErrors = new List<string>();
 
-        public abstract List<string> ValidateEmployee(IEmployee employee, Zoo zoo);
+        public abstract List<string> ValidateEmployee(IEmployee employee, Zoo zoo, IConsole console);
     }
 }

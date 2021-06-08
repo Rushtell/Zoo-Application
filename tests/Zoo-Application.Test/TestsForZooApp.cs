@@ -354,6 +354,42 @@ namespace Zoo_Application.Test
 
                 zoo.HireEmployee(zooKeeper);
             });
+
+            Assert.Throws<NoNeededExperienceException>(() =>
+            {
+                ZooApp zooApp = new ZooApp();
+
+                IConsole console = new TestConsole();
+
+                Zoo zoo = new Zoo("Forest", console);
+
+                zooApp.AddZoo(zoo);
+
+                zoo.AddEnclosure("Enclosure1", 10000);
+
+                ZooKeeper zooKeeper = new ZooKeeper() { FirstName = "K", LastName = "K" };
+                zooKeeper.AddAnimalExperience(typeof(Lion).ToString());
+
+                zoo.HireEmployee(zooKeeper);
+            });
+
+            Assert.Throws<NoNeededExperienceException>(() =>
+            {
+                ZooApp zooApp = new ZooApp();
+
+                IConsole console = new TestConsole();
+
+                Zoo zoo = new Zoo("Forest", console);
+
+                zooApp.AddZoo(zoo);
+
+                zoo.AddEnclosure("Enclosure1", 10000);
+
+                Veterinarian veterinarian = new Veterinarian() { FirstName = "K", LastName = "K" };
+                veterinarian.AddAnimalExperience(typeof(Lion).ToString());
+
+                zoo.HireEmployee(veterinarian);
+            });
         }
 
         [Fact]
